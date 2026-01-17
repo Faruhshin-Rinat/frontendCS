@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топ киберспортсменов по CS - Главная</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            font-size: 16px;
+        }
+
+        .top-nav {
+            background-color: #ffffff;
+            position: relative;
+            z-index: 0;
+            padding: 0 1%;
+        }
+
+            .top-nav ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .top-nav li {
+                display: inline-block;
+                margin-right: 2%;
+            }
+
+            .top-nav a {
+                color: #000;
+                text-decoration: none;
+                font-size: 16px;
+                padding: 5px 10px;
+                display: inline-block;
+            }
+
+                .top-nav a:hover {
+                    text-decoration: underline;
+                    color: #4169E1;
+                }
+
+                .top-nav a.active {
+                    background-color: #87CEEB;
+                    color: #000;
+                    border-radius: 0 3px 0 0;
+                    position: relative;
+                    z-index: 2;
+                    margin-bottom: -2px;
+                    padding: 12px 20px 14px;
+                }
+
+                    .top-nav a.active:hover {
+                        color: #000;
+                    }
+
+        .header-bar {
+            background-color: #87CEEB;
+            padding: 1% 1.5% 1% 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            clear: both;
+        }
+
+        .logo {
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            float: left;
+            padding-left: 1.5%;
+        }
+
+        .search-box {
+            float: right;
+        }
+
+            .search-box input {
+                padding: 5px 10px;
+                margin-right: 5px;
+                border: 1px solid #ccc;
+                font-size: 14px;
+                width: 192px;
+            }
+
+            .search-box button {
+                padding: 5px 14px;
+                background-color: #4169E1;
+                color: #fff;
+                border: none;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+        .top-images-container, .main-container {
+            width: 100%;
+            padding: 1.5%;
+            overflow: hidden;
+        }
+
+        .main-container {
+            clear: both;
+        }
+
+        .main-content {
+            width: 70%;
+            float: left;
+            margin-right: 0;
+            border-right: 2px solid #D2B48C;
+            padding-right: 2%;
+        }
+
+        .sidebar {
+            width: 28%;
+            float: right;
+        }
+
+        .top-images {
+            width: 100%;
+            overflow: hidden;
+        }
+
+            .top-images:after, .main-container:after, .circular-blocks:after,
+            .horizontal-block:after, .sidebar-block:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            .top-images > div {
+                float: left;
+                height: 250px;
+                overflow: hidden;
+            }
+
+        .large-image-left, .large-image-right {
+            width: 28%;
+            margin-right: 2%;
+        }
+
+        .large-image-left {
+            background-color: #E0F6FF;
+        }
+
+        .large-image-right {
+            background-color: #E0FFFF;
+            margin-right: 0;
+        }
+
+        .small-images-grid {
+            width: 40%;
+            margin-right: 2%;
+        }
+
+        .small-images-row {
+            width: 100%;
+            height: 47.5%;
+            margin-bottom: 5%;
+            overflow: hidden;
+        }
+
+            .small-images-row:last-child {
+                margin-bottom: 0;
+            }
+
+            .small-images-row > div {
+                width: 47.5%;
+                height: 100%;
+                float: left;
+                margin-right: 5%;
+                overflow: hidden;
+            }
+
+                .small-images-row > div:nth-child(2n) {
+                    margin-right: 0;
+                }
+
+        .small-image, .beige-image, .pink-image, .brown-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .small-image {
+            background-color: #D3D3D3;
+        }
+
+        .beige-image {
+            background-color: #F5DEB3;
+        }
+
+        .pink-image {
+            background-color: #FFB6C1;
+        }
+
+        .brown-image {
+            background-color: #A0522D;
+        }
+
+        .large-image-left img, .large-image-right img,
+        .small-images-row img, .horizontal-image img,
+        .side-image-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .circular-blocks {
+            width: 100%;
+            margin: 1.5% 0;
+            overflow: hidden;
+            clear: both;
+        }
+
+        .circular-item {
+            width: 24%;
+            float: left;
+            margin-right: 1.33%;
+            text-align: center;
+        }
+
+            .circular-item:last-child {
+                margin-right: 0;
+            }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+            .circle img {
+                width: 100%;
+                height: 100%;
+            }
+
+        .circle-brown {
+            background-color: #DEB887;
+        }
+
+        .circle-blue {
+            background-color: #ADD8E6;
+        }
+
+        .circle-gray {
+            background-color: #D3D3D3;
+        }
+
+        .circle-orange {
+            background-color: #FFDAB9;
+        }
+
+        .circular-item h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .circular-item p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            min-height: 40px;
+        }
+
+        .circular-item .btn {
+            background-color: #4169E1;
+            color: #fff;
+            padding: 5px 14px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .horizontal-block {
+            width: 100%;
+            margin-bottom: 1.5%;
+            overflow: hidden;
+            clear: both;
+        }
+
+        .horizontal-image, .side-image-block {
+            width: 48%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .horizontal-image {
+            background-color: #E0FFFF;
+            float: left;
+            margin-right: 2%;
+        }
+
+        .side-image-block {
+            background-color: #FFB6C1;
+            float: right;
+        }
+
+        .horizontal-text, .horizontal-text-left {
+            width: 50%;
+            background-color: #fff;
+            padding: 16px;
+            min-height: 180px;
+        }
+
+        .horizontal-text {
+            float: right;
+        }
+
+        .horizontal-text-left {
+            float: left;
+            margin-right: 2%;
+        }
+
+            .horizontal-text h3, .horizontal-text-left h3 {
+                margin-bottom: 10px;
+                font-size: 16px;
+            }
+
+            .horizontal-text-left h3 {
+                text-align: right;
+            }
+
+            .horizontal-text p, .horizontal-text-left p {
+                margin-bottom: 10px;
+                line-height: 1.5;
+                text-align: justify;
+                font-size: 14px;
+            }
+
+            .horizontal-text a, .horizontal-text-left a {
+                color: #4169E1;
+                text-decoration: none;
+                margin-top: 10px;
+                font-size: 14px;
+            }
+
+        .horizontal-text a {
+            text-align: left;
+            display: block;
+        }
+
+        .horizontal-text-left a {
+            text-align: right;
+            display: block;
+        }
+
+        .sidebar-block {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 24px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            clear: both;
+        }
+
+            .sidebar-block h3 {
+                margin-bottom: 10px;
+                text-align: center;
+                font-size: 16px;
+            }
+
+            .sidebar-block p {
+                margin-bottom: 10px;
+                line-height: 1.5;
+                font-size: 14px;
+            }
+
+        .sidebar-image-small, .sidebar-image-gray {
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .sidebar-image-small {
+            background-color: #ADD8E6;
+            height: 100px;
+            margin: 10px 0;
+        }
+
+        .sidebar-image-gray {
+            background-color: #D3D3D3;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+
+            .sidebar-image-small img, .sidebar-image-gray img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 30px;
+            }
+
+        .sidebar-block a {
+            color: #4169E1;
+            text-decoration: none;
+            margin-top: 10px;
+            clear: both;
+            display: block;
+            font-size: 14px;
+        }
+
+        .sidebar-block:first-child a {
+            text-align: right;
+            float: right;
+        }
+
+        .sidebar-block:last-child a {
+            text-align: left;
+            float: left;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 1.5%;
+            text-align: center;
+            margin-top: 1.5%;
+            width: 100%;
+            clear: both;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <ul>
+            <li><a href="index.html" class="active">Главная</a></li>
+            <li><a href="rating.html">Рейтинг киберспортсменов</a></li>
+            <li><a href="playerCS.html">О игроке</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-bar">
+        <div class="logo">Топ киберспортсменов по CS</div>
+        <div class="search-box">
+            <input type="text" placeholder="Поиск по сайту">
+            <button>Найти</button>
+        </div>
+    </div>
+
+    <div class="top-images-container">
+        <div class="top-images">
+            <div class="large-image-left">
+                <img src="photos/simple.jpg" alt="s1mple">
+            </div>
+            <div class="small-images-grid">
+                <div class="small-images-row">
+                    <div class="small-image">
+                        <img src="photos/donk.jpg" alt="donk">
+                    </div>
+                    <div class="beige-image">
+                        <img src="photos/niko.jpg" alt="niko">
+                    </div>
+                </div>
+                <div class="small-images-row">
+                    <div class="pink-image">
+                        <img src="photos/device.jpg" alt="device">
+                    </div>
+                    <div class="brown-image">
+                        <img src="photos/kyousuke.jpg" alt="kyousuke">
+                    </div>
+                </div>
+            </div>
+            <div class="large-image-right">
+                <img src="photos/monesy.jpg" alt="m0nesy">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="main-content">
+            <div class="circular-blocks">
+                <div class="circular-item">
+                    <div class="circle circle-brown">
+                        <img src="photos/spirit.jpg" alt="spirit">
+                    </div>
+                    <h3>Team Spirit</h3>
+                    <p>
+                        Российская киберспортивная организация
+                    </p>
+                    <a href="playerCS.html" class="btn">Подробнее»</a>
+                </div>
+                <div class="circular-item">
+                    <div class="circle circle-blue">
+                        <img src="photos/vitality.jpg" alt="vitality">
+                    </div>
+                    <h3>Team Vitality</h3>
+                    <p>Французская киберспортивная организация</p>
+                    <a href="#" class="btn">Подробнее»</a>
+                </div>
+                <div class="circular-item">
+                    <div class="circle circle-gray">
+                        <img src="photos/furia.jpg" alt="furia">
+                    </div>
+                    <h3>FURIA Esports</h3>
+                    <p>
+                        Бразильская киберспортивная организация
+                    </p>
+                    <a href="#" class="btn">Подробнее»</a>
+                </div>
+                <div class="circular-item">
+                    <div class="circle circle-orange">
+                        <img src="photos/navi.jpg" alt="navi">
+                    </div>
+                    <h3>Natus Vincere</h3>
+                    <p>Украинская киберспортивная организация</p>
+                    <a href="#" class="btn">Подробнее»</a>
+                </div>
+            </div>
+
+            <div class="horizontal-block">
+                <div class="horizontal-image">
+                    <img src="photos/player-monesy.jpg" alt="monesy">
+                </div>
+                <div class="horizontal-text">
+                    <h3>Илья «m0NESY» Осипов</h3>
+                    <p>
+                        Молодой российский снайпер, воспитанник академии
+                        NAVI и нынешняя звезда G2, известный своей
+                        невероятной механикой и агрессивной игрой на AWP.
+                    </p>
+                    <a href="playerCS.html">Подробнее»</a>
+                </div>
+            </div>
+
+            <div class="horizontal-block">
+                <div class="horizontal-text-left">
+                    <h3>Николай «device» Ридтц</h3>
+                    <p>
+                        Датский снайпер-легенда, символ стабильности и
+                        высочайшего интеллекта в игре, многократный
+                        чемпион Majors, чье имя стало синонимом надежности.
+                    </p>
+                    <a href="#">Подробнее»</a>
+                </div>
+                <div class="side-image-block">
+                    <img src="photos/player-device.jpg" alt="device">
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-block">
+                <h3>StarLadder Budapest Major 2025</h3>
+                <p>
+                    Один из главных мейджор-турниров по CS2 в сезоне,
+                    который проходит в Будапеште.
+                </p>
+                <div class="sidebar-image-small">
+                    <img src="photos/major.jpg" alt="major">
+                </div>
+                <a href="#">Подробнее»</a>
+            </div>
+            <div class="sidebar-block">
+                <div class="sidebar-image-gray">
+                    <img src="photos/katowice.jpg" alt="katowice">
+                </div>
+                <h3>IEM Katowice 2025</h3>
+                <p>
+                    Престижный турнир серии Intel Extreme
+                    Masters в Катовице.
+                </p>
+                <a href="#">Подробнее»</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>2025 | Группа: Б9123-09.03.04(3) | Разработчик: Фарухшин Р. Р.</p>
+    </footer>
+
+</body>
+</html>
