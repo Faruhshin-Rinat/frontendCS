@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Топ киберспортсменов по CS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        /*навигация*/
+        header {
+            margin-bottom: 30px;
+            padding-top: 5px;
+        }
+
+        .navigate {
+            display: flex;
+            justify-content: flex-start;
+            background-color: white;
+            border-top: 2px solid #999;
+            border-bottom: 2px solid #999;
+        }
+
+            .navigate ul {
+                display: flex;
+                gap: 0;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navigate a {
+                text-decoration: none;
+                color: #333;
+                padding: 12px 35px;
+                display: block;
+                background-color: white;
+                font-size: 18px;
+            }
+
+            .navigate .active {
+                color: green;
+                background-color: white;
+                font-weight: bold;
+            }
+
+            .navigate ul li:first-child a {
+                margin-left: 2vw;
+                border-right: 2px solid #999;
+                border-left: 2px solid #999;
+            }
+
+        /*галерея*/
+        .cont1 {
+            width: 95%;
+        }
+
+        .galery {
+            display: grid;
+            grid-template-columns: 27% 46% 27%;
+            grid-template-rows: 1fr 1fr;
+            gap: 5px;
+            height: 350px;
+        }
+
+            .galery > div {
+                display: flex;
+                color: #333;
+                font-size: 16px;
+                overflow: hidden;
+            }
+
+            .galery img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .imgs1 {
+            grid-column: 1;
+            grid-row: 1;
+            background-color: #a8c5d1;
+        }
+
+        .imgs1-2 {
+            grid-column: 1;
+            grid-row: 2;
+            background-color: #b8a8a0;
+        }
+
+        .imgs2 {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            background-color: #b8d5e8;
+        }
+
+        .imgs3 {
+            grid-column: 3;
+            grid-row: 1;
+            background-color: #f0b8d0;
+        }
+
+        .imgs3-2 {
+            grid-column: 3;
+            grid-row: 2;
+            background-color: #f0d8a8;
+        }
+
+        /*команды*/
+        .cont2 {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .circle-blocks {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 18%;
+        }
+
+        .circle-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            color: #333;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+            .circle-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+        .circle-item:nth-child(1) .circle-img {
+            background-color: #87ceeb;
+        }
+
+        .circle-item:nth-child(2) .circle-img {
+            background-color: #add8e6;
+        }
+
+        .circle-item:nth-child(3) .circle-img {
+            background-color: #a9a9a9;
+        }
+
+        .circle-item:nth-child(4) .circle-img {
+            background-color: #f0b8d0;
+        }
+
+        .circle-item:nth-child(5) .circle-img {
+            background-color: #b8a8a0;
+        }
+
+        .circle-item h2 {
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .circle-item p {
+            font-size: 12px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .mixed-blocks {
+            display: grid;
+            width: 95%;
+            min-height: 20vw;
+            margin: 0 auto;
+            grid-row-gap: 0.2vw;
+            grid-column-gap: 1vw;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+            .mixed-blocks > .section1 {
+                grid-area: 1 / 1 / 3 / 2;
+            }
+
+            .mixed-blocks > .section2 {
+                grid-area: 1 / 2 / 3 / 3;
+            }
+
+            .mixed-blocks > .section3 {
+                grid-area: 1 / 3 / 2 / 4;
+            }
+
+            .mixed-blocks > .section4 {
+                grid-area: 2 / 3 / 3 / 4;
+            }
+
+        /*игрок*/
+        .first-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1vw;
+        }
+
+            .first-block img {
+                width: 50%;
+                object-fit: cover;
+                margin: 0.5vw;
+            }
+
+            .first-block > div {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                padding: 0.5vw;
+                min-height: 0;
+            }
+
+            .first-block p {
+                text-align: justify;
+                flex-grow: 1;
+                margin-bottom: 1px;
+            }
+
+            .first-block h4 {
+                margin-bottom: 10px;
+            }
+
+            .first-block form {
+                margin-top: auto;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+        /*Counter-Strike*/
+        .text-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            text-align: justify;
+        }
+
+            .text-block h4 {
+                text-align: center;
+                margin-bottom: 1vw;
+            }
+
+            .text-block form {
+                margin-top: 1vw;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+        /*турниры*/
+        .long-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1vw;
+        }
+
+            .long-block p {
+                text-align: justify;
+                margin: 0.5vw;
+                flex-grow: 1;
+            }
+
+            .long-block form {
+                margin-top: auto;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .long-block img {
+                width: 70%;
+                height: 60%;
+                object-fit: cover;
+                overflow: hidden;
+                margin: 0.5vw;
+            }
+
+            .long-block h4 {
+                margin: 0.5vw;
+            }
+
+        .right {
+            text-align: right;
+        }
+
+        [type="button"] {
+            background-color: blue;
+            color: white;
+            border: solid 1px black;
+            border-radius: 5px;
+            padding: 0.3vw 0.3vw;
+            font-size: 0.8vw;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #FFFFFF;
+            color: black;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+            border-top: 3px solid black;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 890px) {
+            .navigate ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                width: 100%;
+            }
+
+                .navigate ul li {
+                    width: 100%;
+                }
+
+                    .navigate ul li:first-child a {
+                        margin-left: 0;
+                        border-left: none;
+                    }
+
+            .navigate a {
+                width: 100%;
+                text-align: center;
+                border-right: 2px solid #999;
+                border-bottom: 2px solid #999;
+            }
+
+            .navigate ul li:nth-child(2) a {
+                border-right: none;
+            }
+
+            .navigate ul li:nth-child(3) a,
+            .navigate ul li:nth-child(4) a {
+                border-bottom: none;
+            }
+
+            .galery {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+            }
+
+                .galery > div {
+                    min-height: 150px;
+                }
+
+            .circle-blocks {
+                flex-wrap: wrap;
+            }
+
+            .circle-item {
+                width: 45%;
+            }
+
+            .mixed-blocks {
+                width: 90%;
+                height: auto;
+                margin: 15px auto;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .first-block {
+                display: flex;
+                flex-direction: column;
+     
+            }
+
+            .first-block > div {
+                width: 100%;
+            }
+
+            .first-block img {
+                width: 100%
+            }
+
+            .first-block p {
+                
+            }
+
+            .long-block {
+                display: flex;
+                flex-direction: column;
+            }
+
+            [type="button"] {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navigate">
+            <ul type="none">
+                <li><a href="#" class="active">Главная страница</a></li>
+                <li><a href="#">Топ киберспортсменов</a></li>
+                <li><a href="#">Турниры</a></li>
+                <li><a href="#">О игроке</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cont1">
+            <div class="galery">
+                <div class="imgs1">
+                    <img src="photos/monesy.jpg" alt="monesy">
+                </div>
+                <div class="imgs1-2">
+                    <img src="photos/donk.jpg" alt="donk">
+                </div>
+                <div class="imgs2">
+                    <img src="photos/simple.jpg" alt="simple">
+                </div>
+                <div class="imgs3">
+                    <img src="photos/kyousuke.jpg" alt="kyousuke">
+                </div>
+                <div class="imgs3-2">
+                    <img src="photos/niko.jpg" alt="niko">
+                </div>
+            </div>
+        </div>
+
+        <div class="cont2">
+            <div class="circle-blocks">
+                <div class="circle-item">
+                    <div class="circle-img">
+                        <img src="photos/vitality.jpg" alt="vitality">
+                    </div>
+                    <h2>Team Vitality</h2>
+                    <p>Французская киберспортивная организация</p>
+                </div>
+                <div class="circle-item">
+                    <div class="circle-img">
+                        <img src="photos/spirit.jpg" alt="spirit">
+                    </div>
+                    <h2>Team Spirit</h2>
+                    <p>Российская киберспортивная организация</p>
+                </div>
+                <div class="circle-item">
+                    <div class="circle-img">
+                        <img src="photos/navi.jpg" alt="navi">
+                    </div>
+                    <h2>Natus Vincere</h2>
+                    <p>Украинская киберспортивная организация</p>
+                </div>
+                <div class="circle-item">
+                    <div class="circle-img">
+                        <img src="photos/furia.jpg" alt="furia">
+                    </div>
+                    <h2>FURIA Esports</h2>
+                    <p>Бразильская киберспортивная организация</p>
+                </div>
+                <div class="circle-item">
+                    <div class="circle-img">
+                        <img src="photos/mouz.jpg" alt="mouz">
+                    </div>
+                    <h2>Mousesports</h2>
+                    <p>Немецкая киберспортивная организация</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mixed-blocks">
+            <div class="section1">
+                <div class="first-block">
+                    <img src="photos/player-monesy.jpg" alt="player-monesy">
+                    <div>
+                        <h4>Илья "m0nesy" Осипов</h4>
+                        <p>
+                            Выдающийся профессиональный игрок в Counter-Strike из России,
+                            известный своей феноменальной реакцией и ролью агрессивного снайпера.
+                            В команде NAVI он стал легендой киберспорта, выиграв многочисленные
+                            трофеи и установив рекорды.
+                        </p>
+                        <form>
+                            <input type="button" value="Подробнее">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section2">
+                <div class="text-block">
+                    <h4>Counter-Strike</h4>
+                    <p>
+                        Counter-Strike — это культовая и фундаментальная дисциплина в мире
+                        киберспорта, представляющая собой многогранный командный тактический
+                        шутер от первого лица. Её суть заключается в противостоянии двух
+                        команд — террористов и спецназа, — где каждая сторона имеет
+                        строгие цели на карте: заложить или обезвредить бомбу, освободить
+                        или удержать заложников, либо же полностью уничтожить противника.
+                        Уникальность и долголетие игры зиждится на идеально сбалансированной
+                        конкурентной экосистеме, где малейшая тактическая ошибка, просчет
+                        в управлении экономикой команды или недостаток личного мастерства
+                        могут решить исход раунда. Геймплей требует не только безупречной
+                        механической точности и рефлексов
+                    </p>
+                    <form>
+                        <input type="button" value="Подробнее">
+                    </form>
+                </div>
+            </div>
+
+            <div class="section3">
+                <div class="long-block">
+                    <div>
+                        <h4 class="right">StarLadder Budapest Major 2025</h4>
+                        <p>
+                            Престижный турнир по Counter-Strike, проходивший в столице Венгрии.
+                            На этом соревновании сильнейшие команды мира боролись за титул
+                            чемпионов.
+                        </p>
+                        <form>
+                            <input type="button" value="Подробнее">
+                        </form>
+                    </div>
+                    <img src="photos/major.jpg" alt="major">
+                </div>
+            </div>
+
+            <div class="section4">
+                <div class="long-block">
+                    <div>
+                        <h4 class="right">IEM Katowice 2025</h4>
+                        <p>
+                            Турнир по киберспорту в Польше, проходящий на знаменитой
+                            «Spodek» арене. Это одно из самых престижных соревнований
+                            по Counter-Strike 2.
+                        </p>
+                        <form>
+                            <input type="button" value="Подробнее">
+                        </form>
+                    </div>
+                    <img src="photos/katowice.jpg" alt="katowice">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            <strong>Разработчик: Фарухшин Ринат Рустамович, группа Б9123-09.03.04 (3 подгруппа)</strong>
+        </p>
+    </footer>
+</body>
+</html>
